@@ -23,7 +23,7 @@ const Sidebar = () => {
   const [activeSection, setActiveSection] = useState("home");
 
   // Scroll to section smoothly
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setActiveSection(id);
   };

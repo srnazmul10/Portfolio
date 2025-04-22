@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 
+
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -9,7 +10,7 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  const onSubmit = async (event) => {
+  const onSubmit = async (event: any) => {
     event.preventDefault();
 
     const formData = {
@@ -168,7 +169,7 @@ const Contact = () => {
             >
               <textarea
                 placeholder="Your Message"
-                rows="3"
+                rows={3}
                 value={message}
                 required
                 onChange={(e) => setMessage(e.target.value)}

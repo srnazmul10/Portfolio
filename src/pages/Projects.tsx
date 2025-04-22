@@ -1,16 +1,23 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project}:{project: any}) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { triggerOnce: true, threshold: 0.2 });
+  const inView = useInView(ref, { amount: 0.2 });
 
+  const [hasBeenInView, setHasBeenInView] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setHasBeenInView(true);
+    }
+  }, [inView]);
   return (
     <motion.div
     id="projects"
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
       className="rounded-2xl bg-white/70 backdrop-blur-md border border-teal-200 transition-all hover:shadow-xl cursor-pointer overflow-hidden"
     >

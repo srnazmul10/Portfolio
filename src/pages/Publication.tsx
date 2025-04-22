@@ -1,7 +1,7 @@
 import { AiOutlineFileText } from "react-icons/ai";
 import { FiExternalLink } from "react-icons/fi";
 
-const PublicationCard = ({ publication }) => {
+const PublicationCard = ({ publication }:{publication: any}) => {
   return (
     <div className="bg-gradient-to-r via-teal-200 to-teal-300 border border-teal-200 text-gray-900 rounded-2xl p-6 shadow-sm transition duration-300 hover:-translate-y-1 flex flex-col justify-between">
       <div className="flex items-start gap-3 mb-3">
