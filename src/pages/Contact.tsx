@@ -10,7 +10,7 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  const onSubmit = async (event: any) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = {
@@ -45,7 +45,6 @@ const Contact = () => {
       console.error("Error submitting form: ", error);
     }
   };
-
   return (
     <motion.div
     id="contact"

@@ -1,20 +1,21 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const ProjectCard = ({ project}:{project: any}) => {
+type ProjectType = {
+  category: string;
+  name: string;
+  description: string;
+  image: string;
+  link: string;
+};
+
+const ProjectCard = ({ project }: { project: ProjectType }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { amount: 0.2 });
 
-  const [hasBeenInView, setHasBeenInView] = useState(false);
-
-  useEffect(() => {
-    if (inView) {
-      setHasBeenInView(true);
-    }
-  }, [inView]);
   return (
     <motion.div
-    id="projects"
+      id="projects"
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
@@ -53,15 +54,15 @@ const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const projects = [
-    { category: "Java", name: "Intelligent Scientific Calculator", description: "Feature-rich calculator using OOP.", image: "./images/scientific-calculator.png"},
-    { category: "Java", name: "Smart Student Management System", description: "Student platform with MySQL integration.", image: "./images/sms.png" },
-    { category: "Java", name: "Next-Gen Library Management System", description: "Streamlined library management with MySQL.", image: "./images/lms.png" },
-    { category: "Java", name: "Online Ticket Booking Hub", description: "Real-time ticket booking system.", image: "./images/tts.jpg" },
-    { category: "Java", name: "Supermarket Inventory System", description: "Inventory tracking and billing system.", image: "./images/sms.png" },
-    { category: "PHP", name: "Hospital Management System", description: "Patient records & billing with PHP.", image: "./images/hms.png" },
-    { category: "IoT", name: "Obstacle-Avoiding Car", description: "Self-navigating car with Arduino.", image: "./images/lfro.png" },
-    { category: "IoT", name: "Smart Traffic Control", description: "Real-time traffic system using IoT.", image: "./images/tm.png" },
-    { category: "ML", name: "Smart Precision Agriculture", description: "AI-powered precision farming.", image: "./images/iot.png" },
+    { category: "Java", name: "Intelligent Scientific Calculator", description: "Feature-rich calculator using OOP.", image: "./images/scientific-calculator.png", link: ""},
+    { category: "Java", name: "Smart Student Management System", description: "Student platform with MySQL integration.", image: "./images/sms.png", link: "" },
+    { category: "Java", name: "Next-Gen Library Management System", description: "Streamlined library management with MySQL.", image: "./images/lms.png", link: "" },
+    { category: "Java", name: "Online Ticket Booking Hub", description: "Real-time ticket booking system.", image: "./images/tts.jpg", link: "" },
+    { category: "Java", name: "Supermarket Inventory System", description: "Inventory tracking and billing system.", image: "./images/sms.png", link: "" },
+    { category: "PHP", name: "Hospital Management System", description: "Patient records & billing with PHP.", image: "./images/hms.png", link: "" },
+    { category: "IoT", name: "Obstacle-Avoiding Car", description: "Self-navigating car with Arduino.", image: "./images/lfro.png", link: "" },
+    { category: "IoT", name: "Smart Traffic Control", description: "Real-time traffic system using IoT.", image: "./images/tm.png", link: "" },
+    { category: "ML", name: "Smart Precision Agriculture", description: "AI-powered precision farming.", image: "./images/iot.png", link: "" },
   ];
 
   const categories = ["All", "Java", "PHP", "IoT", "ML"];
