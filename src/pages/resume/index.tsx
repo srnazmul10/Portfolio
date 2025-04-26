@@ -25,6 +25,11 @@ const ResumePage = () => {
       year: "Jun 2017 - July 2019",
       institution: "St. Gregory’s High School and College",
     },
+    {
+      title: "Secondary School Certificate (HSC)",
+      year: "Jan 2016 - Jun 2017",
+      institution: "Ramakrishna Mission High School",
+    },
   ];
 
   const experienceData = [
@@ -104,7 +109,7 @@ const ResumePage = () => {
           <p className="text-2xl font-semibold bg-teal-800 w-36 text-center mb-10 text-white p-2 rounded-md">
             Education
           </p>
-          <div className="absolute h-64 border-l-4 border-teal-800 left-2 transform -translate-x-1/2 top-23"></div>
+          <div className="absolute h-70 border-l-4 border-teal-800 left-2 transform -translate-x-1/2 top-23"></div>
 
           <div className="space-y-6">
             {educationData.map((item, index) => (

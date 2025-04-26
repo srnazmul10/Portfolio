@@ -10,7 +10,7 @@ import Footer from "../../components/layout/Footer";
 
 const HomePage = () => {
   const titles = ["Nazmul Islam", "Cyber Security Engineer"];
-  
+
   const [currentTitle, setCurrentTitle] = useState("");
   const [titleIndex, setTitleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -18,8 +18,8 @@ const HomePage = () => {
   const [cursorVisible, setCursorVisible] = useState(true);
 
   useEffect(() => {
-    const typingSpeed = isDeleting ? 50 : 100; 
-    const delayBetweenTitles = 1000; 
+    const typingSpeed = isDeleting ? 50 : 100;
+    const delayBetweenTitles = 1000;
 
     if (!isDeleting && charIndex === titles[titleIndex].length) {
       setTimeout(() => setIsDeleting(true), delayBetweenTitles);
@@ -41,6 +41,7 @@ const HomePage = () => {
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, titleIndex, titles]);
 
+  // Blinking cursor effect
   useEffect(() => {
     const cursorBlink = setInterval(() => {
       setCursorVisible((prev) => !prev);
@@ -49,10 +50,10 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div id="home" className="flex flex-col min-h-screen overflow-hidden overflow-x-hidden">
+    <div className="flex flex-col min-h-screen overflow-hidden overflow-x-hidden">
       <motion.div
         id="home"
-        className="flex items-center flex-col md:flex-row h-screen justify-center bg-teal-100 gap-8 py-16 px-4 md:px-20 min-h-screen"
+        className="flex items-center flex-col md:flex-row justify-center bg-teal-100 gap-8 py-16 px-4 md:px-20"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -92,11 +93,10 @@ const HomePage = () => {
           >
             <p className="mb-4 text-lg">
               I am a Cyber Security Engineer with a strong problem-solving
-              mindset and expertise in securing digital systems. With a
-              Computer Science background and an MSc in Cyber Security
-              Engineering from the University of East London, I specialize in
-              protecting applications, optimizing security, and mitigating
-              threats.
+              mindset and expertise in securing digital systems. With a Computer
+              Science background and an MSc in Cyber Security Engineering from
+              the University of East London, I specialize in protecting
+              applications, optimizing security, and mitigating threats.
             </p>
             <p className="mb-4 text-lg">
               Now based in the UK, I am passionate about delivering efficient,
@@ -105,14 +105,17 @@ const HomePage = () => {
             </p>
           </motion.div>
 
-          <motion.div
-            className="mt-6 flex gap-2"
-          >
-            <a href="/Nazmul Vai.pdf" target="_blank" className="font-bold cursor-pointer px-6 py-3 rounded-md bg-teal-500 transition-all ease-in-out duration-300 hover:bg-teal-700 hover:text-white">
-             <div className="flex gap-2">
-             <LiaDownloadSolid size={22}/>
-             <p id="contact" className="text-xl">Download CV</p>
-             </div>
+          {/* Contact Button */}
+          <motion.div className="mt-6 flex gap-2">
+            <a
+              href="/Nazmul Vai.pdf"
+              target="_blank"
+              className="font-bold cursor-pointer px-6 py-3 rounded-md bg-teal-500 transition-all ease-in-out duration-300 hover:bg-teal-700 hover:text-white"
+            >
+              <div className="flex gap-2">
+                <LiaDownloadSolid size={20} />
+                <p className="text-xl">Download CV</p>
+              </div>
             </a>
 
             <button className="text-xl font-bold cursor-pointer px-6 py-2 rounded-md bg-teal-500 transition-all ease-in-out duration-300 hover:bg-teal-700 hover:text-white">
@@ -122,39 +125,31 @@ const HomePage = () => {
         </motion.div>
       </motion.div>
 
-      <div
-        id="resume"
-        className="bg-teal-200"
-      >
+      <div id="resume" className="bg-teal-200">
         <ResumePage />
       </div>
 
-      <div
-        id="projects" className="bg-teal-100"
-      >
+      {/* Projects Section */}
+      <div id="projects" className="bg-teal-100">
         <Projects />
       </div>
 
-      <div
-        id="publication"
-        className="bg-teal-200"
-      >
+      {/* Publication Section */}
+      <div id="publication" className="bg-teal-200">
         <Publication />
       </div>
 
-      <div
-        id="blogs"
-        className="bg-teal-100"
-      >
+      {/* Blogs Section */}
+      <div id="blogs" className="bg-teal-100">
         <Blogs />
       </div>
 
-      <div
-        id="contact"
-        className="bg-teal-200"
-      >
+      {/* Contact Section */}
+      <div id="contact" className="bg-teal-200">
         <Contact />
       </div>
+
+      {/* Footer */}
       <Footer />
     </div>
   );
